@@ -7,8 +7,8 @@ var bodyParser = require('body-parser');
 var http = require("http"),
     mongojs = require("mongojs");
 
-var routes = require('./routes/index');
-var teams = require('./routes/teams');
+var controllers = require('./controllers/index');
+var teams = require('./controllers/teams');
 
 var app = express();
 
@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.use('/', controllers);
 app.use('/teams', teams);
 
 // catch 404 and forward to error handler
